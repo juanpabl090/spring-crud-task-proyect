@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TaskController {
@@ -26,6 +27,11 @@ public class TaskController {
     @GetMapping("/api/task")
     public List<Task> getAll() {
         return taskRepository.findAll();
+    }
+
+    @GetMapping("/api/task/{id}")
+    public Optional<Task> getTaskbyid(@PathVariable Long id) {
+        return taskRepository.findById(id);
     }
 
     @PostMapping("/api/task")
